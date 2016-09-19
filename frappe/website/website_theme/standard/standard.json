@@ -1,7 +1,7 @@
 {
  "apply_style": 1, 
- "apply_text_styles": 0, 
- "background_color": "#F0F8FF", 
+ "apply_text_styles": 1, 
+ "background_color": "#FFFFFF", 
  "creation": "2015-02-19 13:37:33.925909", 
  "custom": 0, 
  "docstatus": 0, 
@@ -13,7 +13,7 @@
  "heading_webfont": "", 
  "idx": 18, 
  "link_color": "", 
- "modified": "2016-09-07 02:33:28.808995", 
+ "modified": "2016-09-19 06:56:27.932164", 
  "modified_by": "Administrator", 
  "module": "Website", 
  "name": "Standard", 
