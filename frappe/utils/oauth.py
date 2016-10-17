@@ -128,7 +128,7 @@ def get_oauth2_flow(provider):
 
 def get_redirect_uri(provider):
 	keys = frappe.conf.get("{provider}_login".format(provider=provider))
-
+	
 	if keys and keys.get("redirect_uri"):
 		# this should be a fully qualified redirect uri
 		return keys["redirect_uri"]
@@ -296,6 +296,8 @@ def get_last_name(data):
 def redirect_post_login(desk_user):
 	# redirect!
 	frappe.local.response["type"] = "redirect"
+#	print desk_user   #amitha #not working
 
 	# the #desktop is added to prevent a facebook redirect bug
 	frappe.local.response["location"] = "/desk#desktop" if desk_user else "/"
+#	frappe.local.response["location"]= "/dashboard"                      #not working

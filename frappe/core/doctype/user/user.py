@@ -460,7 +460,10 @@ def update_password(new_password, key=None, old_password=None):
 
 	frappe.local.login_manager.login_as(user)
 
-	if user_doc.user_type == "System User":
+	if user_doc.user_type == "System User" and user == 'Administrator':
+	#	return "/desk"
+		return "/dashboard"
+	elif user_doc.user_type == "System User" and user != 'Administrator':
 		return "/desk"
 	else:
 		return redirect_url if redirect_url else "/"

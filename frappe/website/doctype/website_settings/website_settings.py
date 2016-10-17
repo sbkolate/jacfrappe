@@ -124,10 +124,16 @@ def get_website_settings():
 	return context
 
 def get_items(parentfield):
-	all_top_items = frappe.db.sql("""\
-		select * from `tabTop Bar Item`
-		where parent='Website Settings' and parentfield= %s
-		order by idx asc""", parentfield, as_dict=1)
+	if frappe.session.user == "Administrator" :  # Added by AMITHA M D
+		all_top_items = frappe.db.sql("""\
+			select * from `tabTop Bar Item`
+			where parent='Website Settings' and parentfield= %s 
+			order by idx asc""", parentfield, as_dict=1)
+	else :																# Added by AMITHA M D
+		all_top_items = frappe.db.sql("""\
+			select * from `tabTop Bar Item`
+			where parent='Website Settings' and parentfield= %s  and label!='Dashboard'
+			order by idx asc""", parentfield, as_dict=1)
 
 	top_items = [d for d in all_top_items if not d['parent_label']]
 

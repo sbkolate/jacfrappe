@@ -13,8 +13,15 @@ no_cache = True
 
 def get_context(context):
 	if frappe.session.user != "Guest" and frappe.session.data.user_type=="System User":
-		frappe.local.flags.redirect_location = "/desk"
+		if frappe.session.data.user_type=="System User":
+			frappe.local.flags.redirect_location = "/desk"
 		raise frappe.Redirect
+		
+#		if frappe.session.user == "Administrator":
+#			frappe.local.flags.redirect_location = "/dashboard"
+#		elif frappe.session.data.user_type=="System User" and frappe.session.user != "Administrator":
+#			frappe.local.flags.redirect_location = "/desk"
+#		raise frappe.Redirect           # Amitha M D
 
 	# get settings from site config
 	context.no_header = True
