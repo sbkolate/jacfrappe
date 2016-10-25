@@ -146,7 +146,9 @@ class LoginManager:
 			if not resume:
 				frappe.local.response['message'] = 'Logged In'
 	#			frappe.local.response["home_page"] = "/desk"    # Amitha added line below
-				frappe.local.response["home_page"] = "/dashboard" if frappe.session.user == "Administrator" else "/desk"
+	#			frappe.local.response["home_page"] = "/dashboard" if frappe.session.user == "Administrator" else "/desk"
+				frappe.local.response["home_page"] = "/dashboard" if "Dashboard Viewer" in frappe.get_roles() else "/desk"
+
 
 		if not resume:
 			frappe.response["full_name"] = self.full_name
