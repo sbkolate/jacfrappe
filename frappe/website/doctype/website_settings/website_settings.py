@@ -124,7 +124,7 @@ def get_website_settings():
 	return context
 
 def get_items(parentfield):
-	if frappe.session.user == "Administrator" :  # Added by AMITHA M D
+	if frappe.session.user == "Administrator" or "Dashboard Viewer" in frappe.get_roles():  # Added by AMITHA M D
 		all_top_items = frappe.db.sql("""\
 			select * from `tabTop Bar Item`
 			where parent='Website Settings' and parentfield= %s 
